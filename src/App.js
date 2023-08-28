@@ -22,9 +22,7 @@ function App() {
   };
 
   const onRemove = (targetId) => {
-    console.log(`${targetId}가 삭제되었습니다`);
     const newTwitList = data.filter((it) => it.id !== targetId);
-    console.log(newTwitList);
     setData(newTwitList);
   };
 

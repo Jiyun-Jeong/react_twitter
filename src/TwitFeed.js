@@ -2,7 +2,6 @@ import TwitItem from "./TwitItem";
 //피드
 
 const TwitFeed = ({ onRemove, twitList }) => {
-  console.log(twitList);
   return (
     <div className="show_twit">
       {twitList.map((it) => (

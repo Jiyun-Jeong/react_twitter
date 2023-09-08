@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-const TwitItem = ({ image, onRemove, author, created_date, content, id }) => {
+const TwitItem = ({image, onRemove, author, created_date, content, id }) => {
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);
 

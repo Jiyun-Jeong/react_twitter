@@ -22,38 +22,53 @@ function App() {
   const getData = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/comments').then((res) => res.json());
 
-    const initData = res.slice(0, 10).map((it) => {
+    const initData = res.slice(0, 1).map((it) => {
       const emailArray = it.email.split('@');
 
       return {
         author: emailArray[0],
         content: randomTwit(),
         //time: new Date().getTime(),
-        id: dataId.current++
+        id: dataId.current++,
+        image: 'https://cataas.com/cat/zPHzhfP1n01EMfKy'
       };
     });
+
+    // const thumbData = response.slice(0, 10).map((it) => {
+    //   const imgUrl = 'https://cataas.com' + it.url;
+      
+    //   return {
+    //     image:imgUrl
+    //   };
+    // });
 
     setData(initData);
   }
 
   useEffect(() => {
     getData();
-
-    // axios.get("https://cataas.com/cat").then((res) => {
-    //   setData(res.data.results.map(user => ({
-    //     image: user.picture.thumbnail
-    //   })))
-    // })
   },[])
 
   const onCreate = (author, content, image) => {
+
+    const newCat = async () => {
+      const catApiUrl = 'https://cataas.com';
+      const catList = await fetch(catApiUrl + '/cat?json=true').then((response) => response.json());
+      const catUrl = catApiUrl + catList.url;
+
+      return catUrl;
+    }
+
+    console.log(newCat().then((e) => console.log(e)));
+    
+    const test = newCat();
+    
     const created_date = new Date().getTime();
     const newItem = {
       author,
       created_date,
-      content,
-      image,
       id: dataId.current,
+      image: newCat().then((e) => console.log(e))
     };
     dataId.current += 1;
     setData([newItem, ...data]);

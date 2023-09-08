@@ -3,11 +3,11 @@ import TwitItem from "./TwitItem";
 
 const TwitFeed = ({ onRemove, twitList }) => {
   return (
-    <div className="show_twit">
+    <ul className="show_twit">
       {twitList.map((it) => (
         <TwitItem key={it.id} {...it} onRemove={onRemove} />
       ))}
-    </div>
+    </ul>
   );
 };
 

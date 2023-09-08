@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 
 //트윗 작성 페이지
-const WriteTwit = ({ onCreate }) => {
+const TwitWrite = ({ onCreate }) => {
   const authorInput = useRef();
   const contentInput = useRef();
 
@@ -63,4 +63,4 @@ const WriteTwit = ({ onCreate }) => {
   );
 };
 
-export default WriteTwit;
+export default TwitWrite;

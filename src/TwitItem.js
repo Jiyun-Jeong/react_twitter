@@ -13,21 +13,28 @@ const TwitItem = ({ onRemove, author, created_date, content, id }) => {
   };
 
   return (
-    <div className="twit_box">
-      <div>
-        <span className="name">{author}</span>
-        <span className="time">{new Date(created_date).toLocaleString()}</span>
+    <li className="twit_box">
+      <div className="contents">
+        <div className="left">
+          <img src="" alt=""></img>
+        </div>
+        <div className="right">
+          <div>
+            <span className="name">{author}</span>
+            <span className="time">{new Date(created_date).toLocaleString()}</span>
+          </div>
+          <p>
+            {isEdit ? (
+              <textarea
+                value={localContent}
+                onChange={(e) => setLocalContent(e.target)}
+              ></textarea>
+            ) : (
+              <>{content}</>
+            )}
+          </p>
+        </div>
       </div>
-      <p>
-        {isEdit ? (
-          <textarea
-            value={localContent}
-            onChange={(e) => setLocalContent(e.target)}
-          ></textarea>
-        ) : (
-          <>{content}</>
-        )}
-      </p>
       <div className="icon_wrap">
         <button className="rewrite" onClick={toggleIsEdit}>
           <span className="hidden">수정하기</span>
@@ -39,7 +46,7 @@ const TwitItem = ({ onRemove, author, created_date, content, id }) => {
           <span className="hidden">좋아요</span>
         </button>
       </div>
-    </div>
+    </li>
   );
 };
 
